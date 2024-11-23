@@ -30,6 +30,9 @@ print(poket)
 # Ctrl + / : # : Single line command 
 # Alt + shift + A  -> """  """ : multiline command
 
+# F string here we can use variable values 
+text = f"Shakil Ahmed {age} living in {district}. He got in Introducing to C Programming Course 4 out of {c_point}."
+print(text)
 
 
 
