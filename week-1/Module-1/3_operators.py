@@ -1,4 +1,5 @@
 # Arithmetic operators
+#---------------------------
 
 num1 = 45
 num2 = 5
@@ -11,6 +12,7 @@ num2 = 5
 # print( 3 ** 5)
 
 # Comparison Operators
+#-----------------------
 
 x = 10
 y = 3
@@ -23,6 +25,7 @@ y = 3
 # print(x <= y) # Less than or equal to
 
 # Logical Operators
+#---------------------
 
 a = True
 b = False
@@ -33,6 +36,7 @@ b = False
 
 
 # Assignment Operators
+#----------------------
 
 # Assignemnt Operators 
 # += 
@@ -44,16 +48,39 @@ b = False
 x = 5
 # x += 3
 # or 
-x = x + 3
+# x = x + 3
 # print(x)
 
 # Membership Operator
+#---------------------
 
-lists = [1,2,3]
+# lists = [1,2,3]
 
-print(2 in lists) # True
-print(5 in lists) # False
-print(7 not in lists) # True
+# print(2 in lists) # True
+# print(5 in lists) # False
+# print(7 not in lists) # True
+
+# Identity Operators
+#--------------------
+x = [1,2,3]
+y = [1,2,3]
+
+# this relation matter
+z = x
+
+# print(x is y) # False
+# print(x is z) # True
+
+# String Operators
+#---------------------
+
+s = "Shakil, Ahmed!"
+print(s.lower())
+print(s.upper())
+print(s.split())
+print(s.replace("Ahmed", "Python"))
+print(len(s))
+
 
 
 
