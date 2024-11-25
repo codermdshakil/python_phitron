@@ -28,6 +28,14 @@ numbers = [5, 10, 15,20,25]
 
 
 # step increase
-for i in range(1,11, 2):
-    print(i)
+# for i in range(1,11, 2):
+#     print(i)
+    
+## Index and value print on FOR LOOP
+
+friends = ['nadim', 'noyon', 'mahfuj', 'asraf']
+
+for index , friend in enumerate(friends):
+    print(f"Index is : {index}, value is : {friend}")
+    
     
