@@ -32,8 +32,49 @@ def full_name2(first, last, *names):
 # print(name1)
 
 
+# Kagrs store value with key and value
+
+def full_names(first, last, **addition):
+    name = f"{first} {last}"
+    print("Kargs value : ", addition)
+    print("--------------------")
+     
+    ## print addition values
+    for key, value in addition.items():
+        print(key, value)
+                
+    return name
+
+# name3 = full_names("Shakil", "Ahmed", n_name="Noyon", n1_name="Nadim")
+# print(name3)
 
 
+def display_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+display_info(name="Alice", age=25, city="New York")
+
+
+"""
+# Summary 
+
+*args
+- Purpose: Allows a function to accept any number of positional arguments.
+- Behavior: It collects additional positional arguments into a tuple.
+
+
+**kwargs
+- Purpose: Allows a function to accept any number of keyword arguments.
+- Behavior: It collects additional keyword arguments into a dictionary.
+
+
+Key Rules:
+*args must come before **kwargs in the parameter list.
+Both *args and **kwargs are optional; you can use either, both, or neither based on the need.
+This flexibility makes Python functions powerful for handling dynamic inputs!
+
+"""
 
 
 
