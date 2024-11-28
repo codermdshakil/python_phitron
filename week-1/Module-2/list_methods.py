@@ -37,7 +37,7 @@ Summary
 * insert(x_index, value) - value to specific position
 * count('banana') - count how many time have this value in list
 * clear() - clear list
-* copy() - shallow copy
+* copy() - shallow copy 
 * sort() - based on
 * reverse() - reverse list
 * remove('banana') - if in list banana has two time then last banana value remove 
