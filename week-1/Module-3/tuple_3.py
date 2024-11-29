@@ -35,6 +35,24 @@ numbers[0][3] = 500
 
 
 
+"""
+### Speciality of tuples:
+1. Immutable - that means we can't add, remove, modify, Fixed data
+2. Faster performance
+3. Memory efficiency
+4. Tuple works in fixed data like months, weeks
+
+
+
+When to Use a Tuple Over a List ?
+
+When you want read-only data.
+When you need a hashable object for sets or dictionary keys.
+When performance or memory efficiency is critical.
+
+
+"""
+
 
 
 """
