@@ -29,6 +29,12 @@ set_B = {100, 30, 80, 40, 60}
 # print(set_B - set_A)
 
 
+## Frozen set
+animals = frozenset(["cat", "dog", "lion"])
+print("cat" in animals) # True
+print("apple" in animals) # False
+
+
 
 
 
