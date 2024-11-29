@@ -1,7 +1,6 @@
 
 ## String
 # string  is immutable so that we can't change it's value
-
 name = 'Sakib\'s Khan'
 name1 = "Sakib Khab"
 
