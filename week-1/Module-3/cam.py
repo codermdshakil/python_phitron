@@ -8,4 +8,7 @@ while True:
     cv2.waitKey(1)
     
 
+# pip install opencv-contrib-python
+
+
     
