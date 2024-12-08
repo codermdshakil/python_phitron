@@ -46,11 +46,5 @@ class Camera:
         self.color = color
         self.pixel = pixel
         
-    def run(self):
-        pass
-    
-    def change_lens(self):
-        pass
-        
     
     
