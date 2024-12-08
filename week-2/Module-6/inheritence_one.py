@@ -40,11 +40,14 @@ class laptop:
         return f"Learning python and practicing"
 
 
-class Phone:
+# inheritence relation with based class or parent class
+
+class Phone(Gadgets):
     
-    def __init__(self,dual_sim):
-        
+    def __init__(self,brand, color, price, origin ,dual_sim):
         self.dual_sim = dual_sim
+        
+        super().__init__(brand, price, color, origin)
     
     def call(self, number, sms):        
         return f"Sending sms to : {number} with {sms}"
@@ -61,6 +64,7 @@ class Camera:
         pass
     
 
-        
+my_phone = Phone('iPhone', 1200000, 'black', 'UK', True)
+print(my_phone.brand)
     
     
