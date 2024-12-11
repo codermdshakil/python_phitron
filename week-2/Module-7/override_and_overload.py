@@ -10,7 +10,8 @@ class Person:
     def eat(self):
         print("Vat mangso  polaw korma")
         
-    
+    def exercise(self):
+        raise NotImplementedError
 
 class Criketer(Person):
     
@@ -21,8 +22,13 @@ class Criketer(Person):
     # Override 
     def eat(self):
         print("Vegitables")
+    
+    def exercise(self):
+        print("Do everyday exercise")
         
     
 sakib = Criketer('sakib', 38, 68, 91, 'BD')
 sakib.eat()
+sakib.exercise()
+
 
