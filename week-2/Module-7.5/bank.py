@@ -41,33 +41,40 @@ class Account(ABC):
         pass
 
 
-myacc = Account('shakil', 1231,500, 1234, 'Savings') 
-# print(myacc.name)
-# print(myacc.password)
-# myacc.changeInfo('janina', 4321)
-# print(myacc.name)
-# print(myacc.password)
-# myacc.deposit(1000)
-# print(myacc.balance)
-# print(myacc.getBalance())
-# print(myacc.__balance)
+class SavingAccount(Account):
+    
+    def __init__(self, name, accNum, balance, password, accType, irate):
+        self.irate = irate
+        super().__init__(name, accNum, balance, password, "Savings")
+    
+    def showInfo(self):
+        print(f"Account Name : {self.name}")
+        print(f"Account Type  : {self.accType}")
+        
+        
+class SpecialAccount(Account):
+    
+    def __init__(self, name, accNum, balance, password, accType, limit):
+        self.limit = limit
+        super().__init__(name, accNum, balance, password, "Special")
+    
+    def showInfo(self):
+        print(f"Account Name : {self.name}")
+        print(f"Account Type  : {self.accType}")
+        
+    def withdraw(self, amount):
+        if amount > 0 and self.limit >= amount:
+            self.balance  -= amount
+            
 
-# access pricate property value
-# print(dir(myacc))
-# print(myacc._Account__balance)
+
+myacc = SpecialAccount('shakil', 1231,500, 1234, 'Savings', 200)
+print(myacc.name)
+ 
+
+ 
 
 
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
