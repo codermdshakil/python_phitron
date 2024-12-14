@@ -48,6 +48,7 @@ class Restaurent:
     def __init__(self, name):
         self.name = name
         self.employees = []
+        self.menu = FoodItem()
     
     def add_employee(self, employee):
         self.employees.append(employee) 
@@ -87,17 +88,24 @@ class Menu:
             
     # show all menu
     def show_menu(self):
-        print("---- Show Menu ------")
+        print("---- Show Menu Items ------")
         print("Name\tPrice\tQuantity")
         for item in self.items:
             print(f"{item.name}\t{item.price}\t{item.quantity}")
 
-                
     
+class FoodItem:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
 
-# ad = Admin('Karim', 'karim@gamil.com', 123123, "Dhaka")
-# ad.add_employee("Shakil", "shakil@gmail.com", 123124, "Kapasia", 20, 'Teacher', 16000)
-# ad.view_employee()
+
+    
+mn = Menu()
+item = FoodItem('Pizza', 12, 10)
+mn.add_menu_item(item)
+mn.show_menu()
 
   
         
