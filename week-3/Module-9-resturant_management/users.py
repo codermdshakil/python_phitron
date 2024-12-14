@@ -31,16 +31,18 @@ class Customer(User):
     
     def __init__(self, name, email, phone, address):
         super().__init__(name, email, phone, address)
-        self.cart = None
+        self.cart = Order()
         
     def view_menu(self, restaurent):
         restaurent.menu.show_menu()
     
-    def add_to_card(self, restaurent, item_name):
+    def add_to_card(self, restaurent, item_name, quantity):
         item = restaurent.menu.find_item(item_name)
         
         if item:
-            pass
+            item.quantity = quantity
+            self.cart.add_item(item)
+            print("item added!!")
         else:
             print("Item not Found!")
         
@@ -95,7 +97,7 @@ class Restaurent:
     def __init__(self, name):
         self.name = name
         self.employees = []
-        self.menu = FoodItem()
+        self.menu = Menu()
     
     def add_employee(self, employee):
         self.employees.append(employee) 
@@ -150,16 +152,26 @@ class FoodItem:
         self.quantity = quantity
 
 
-    
+
+mamar_res = Restaurent('Pizzaburg')
 mn = Menu()
+
 # create item
 item = FoodItem('Pizza', 12.45, 10)
-ad = Admin("Shakil", "s@gmail.com", 1232, "Kapasia")
-res = Restaurent("Pizzaburg")
-ad.add_new_item(res, item)
-# add item to menu item list 
-mn.add_menu_item(item)
-mn.show_menu()
+item2 = FoodItem('Burger', 10, 30)
+
+# admin add items
+ad = Admin('Noyon', 'noyon@gmail.com', 12342, "Ranigonj")
+ad.add_new_item(mamar_res, item)
+ad.add_new_item(mamar_res, item2)
+
+
+
+customer1 = Customer('Rahim', "rahim@gmail.com", 1234123, "Dhaka")
+customer1.view_menu(mamar_res)
+
+
+
 
   
         
