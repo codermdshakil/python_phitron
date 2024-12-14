@@ -58,8 +58,14 @@ class Restaurent:
         print("Employee List : ")
         for emp in self.employees:
             print(emp.name, emp.email, emp.phone,emp.address)
-
-
+            
+            
+    def add_new_item(self, restuarent, item):
+        restuarent.menu.add_menu_item(item)
+        
+    def delete_item(self, restuarent, item):
+        restuarent.menu.remove_item(item)
+        
 
 class Menu:
     
