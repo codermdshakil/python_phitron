@@ -59,6 +59,22 @@ class Restaurent:
             print(emp.name, emp.email, emp.phone,emp.address)
 
 
+
+class Menu:
+    
+    def __init__(self):
+        self.items = [] # items database
+    
+    # add items to menu
+    def add_menu_item(self, item):
+        self.items.append(item)
+    
+    
+            
+        
+                
+    
+
 # ad = Admin('Karim', 'karim@gamil.com', 123123, "Dhaka")
 # ad.add_employee("Shakil", "shakil@gmail.com", 123124, "Kapasia", 20, 'Teacher', 16000)
 # ad.view_employee()
