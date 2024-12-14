@@ -1,6 +1,7 @@
  
 
-from users import Menu
+
+from menu import Menu
 
 class Restaurent:
     def __init__(self, name):
