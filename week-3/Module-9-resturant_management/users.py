@@ -26,6 +26,30 @@ class Employee(User):
     
 # emp = Employee("rahim", "rahim@gmail.com", 12312, "Dhaka", 20, "Chef", 12000)
 
+# create customer
+class Customer(User):
+    
+    def __init__(self, name, email, phone, address):
+        super().__init__(name, email, phone, address)
+        self.cart = None
+        
+    def view_menu(self, restaurent):
+        restaurent.menu.show_menu()
+    
+    def add_to_card(self, restaurent, item_name):
+        item = restaurent.menu.find_item(item_name)
+        
+        if item:
+            pass
+        else:
+            print("Item not Found!")
+        
+    def view_cart(self):
+        print("--- View Cart ------")
+        print("Name\tPrice\tQuantity")
+        
+        
+    
 
         
 class Admin(User):
