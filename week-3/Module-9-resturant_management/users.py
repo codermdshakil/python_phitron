@@ -48,10 +48,29 @@ class Customer(User):
         print("--- View Cart ------")
         print("Name\tPrice\tQuantity")
         
-        
-    
+        for item, quantity in self.cart.items():
+            print(f"{item.name}\t{item.price}\t{quantity}")
+        print("Total Price: ", {self.cart.total_price})
 
+class Order:
+    
+    def __init__(self):
+        self.items = {}
+    
+    def add_item(self, item):
+        if item in self.items:
+            self.items[item] += item.quantity # jodi card a item thake tahole quantity increase
+        else:
+             self.items[item] = item.quantity  # jodi card a item na thake
         
+    def total_price(self):
+        return sum(item.price * quantity for item, quantity in self.items.items())
+     
+    
+    def clear(self):
+        self.items = {}
+         
+    
 class Admin(User):
     
     def __init__(self, name, email, phone, address):
