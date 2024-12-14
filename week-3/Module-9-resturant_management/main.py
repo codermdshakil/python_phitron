@@ -30,15 +30,23 @@ def customer_menu():
         
         if choise == 1:
             customer.view_menu(mamar_res)
+            
         elif choise == 2:
+            
             item_name = input("Enter item name : ")
             item_quantity = int(input("Enter Item Quanity: "))
             customer.add_to_card(mamar_res,item_name, item_quantity)
+            
         elif choise == 3:
-            customer.view_cart()
+            
+            customer.view_menu(mamar_res)
+            
         elif choise == 4:
+            
             customer.pay_bill()
+            
         elif choise == 5:
+            
             break
         else:
             print("Invalid Input!!")

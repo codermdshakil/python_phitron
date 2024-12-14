@@ -51,10 +51,10 @@ class Customer(User):
         
         for item, quantity in self.cart.items.items():
             print(f"{item.name}\t{item.price}\t{quantity}")
-        print("Total Price: ", round(self.cart.total_price()))
+            print("Total Price: ", round(self.cart.total_price))
         
     def pay_bill(self):
-        print(f"Total {round(self.cart.total_price())} paid successfully!")
+        print(f"Total {round(self.cart.total_price)} paid successfully!")
         self.cart.clear()
         
 
