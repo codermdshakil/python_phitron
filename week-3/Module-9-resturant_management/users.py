@@ -76,7 +76,14 @@ class Menu:
                 return item
         return None
     
-    
+    # remove item from item list
+    def remove_item(self, item_name):
+        item = self.find_item(item_name)
+        if item:
+          self.items.remove(item)
+          print(f"{item_name} Item Deleted!")
+        else:
+            print("Item not found!")
             
         
                 
