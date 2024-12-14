@@ -40,7 +40,11 @@ class Admin(User):
     def view_employee(self, restuarent):
         restuarent.view_employee()
 
+    def add_new_item(self, restuarent, item):
+        restuarent.menu.add_menu_item(item)
         
+    def remove_item(self, restuarent, item):
+        restuarent.menu.remove_item(item)
     
     
 
@@ -60,11 +64,7 @@ class Restaurent:
             print(emp.name, emp.email, emp.phone,emp.address)
             
             
-    def add_new_item(self, restuarent, item):
-        restuarent.menu.add_menu_item(item)
-        
-    def delete_item(self, restuarent, item):
-        restuarent.menu.remove_item(item)
+   
         
 
 class Menu:
@@ -109,7 +109,12 @@ class FoodItem:
 
     
 mn = Menu()
-item = FoodItem('Pizza', 12, 10)
+# create item
+item = FoodItem('Pizza', 12.45, 10)
+ad = Admin("Shakil", "s@gmail.com", 1232, "Kapasia")
+res = Restaurent("Pizzaburg")
+ad.add_new_item(res, item)
+# add item to menu item list 
 mn.add_menu_item(item)
 mn.show_menu()
 
