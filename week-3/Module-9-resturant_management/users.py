@@ -82,6 +82,9 @@ class Admin(User):
         
     def view_employee(self, restuarent):
         restuarent.view_employee()
+        
+    # def view_items(self, restuarent):
+    #     restuarent.menu.()
 
     def add_new_item(self, restuarent, item):
         restuarent.menu.add_menu_item(item)
@@ -89,6 +92,9 @@ class Admin(User):
     def remove_item(self, restuarent, item):
         restuarent.menu.remove_item(item)
     
+    def view_menu(self, restaurent):
+        restaurent.menu.show_menu()
+        
     
     
 
