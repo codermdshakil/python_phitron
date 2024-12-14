@@ -69,6 +69,13 @@ class Menu:
     def add_menu_item(self, item):
         self.items.append(item)
     
+    # find item from item list
+    def find_item(self, item_name):
+        for item in self.items:
+            if item.name.lower() == item_name.lower():
+                return item
+        return None
+    
     
             
         
