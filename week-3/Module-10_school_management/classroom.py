@@ -1,18 +1,17 @@
-
-
-class Classroom:
+class ClassRoom:
     
-    def __init__(self, name):
+    def __init__(self, name) -> None:
+        
         self.name = name
-        self.students = [] # list of students objects
-        self.subjects = [] # list of subjects objects
+        self.students = [] # list of student objects
+        self.subjects = [] # list of subject objects
         
         
-    # add student
-    def add_student(self, student): # rahim, 8
-        roll_No = f"{self.name} - {len(self.students)+1}"
-        student.id = roll_No
+    def add_student(self, student): # rahim, eight e vorti hobe. 
+        roll_no = f"{self.name}-{len(self.students)+1}" # eight-2
+        student.id = roll_no
         self.students.append(student)
+        
         
     def add_subject(self, subject):
         self.subjects.append(subject)
@@ -23,7 +22,5 @@ class Classroom:
             subject.exam(self.students)
             
         for student in self.students:
-            student.all_value_to_grade(student)
-        
-        
+            student.calculate_final_grade()
         
