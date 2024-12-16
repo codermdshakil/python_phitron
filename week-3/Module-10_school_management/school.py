@@ -21,8 +21,8 @@ class School:
         pass
     
     
+    # calculate marks wise grade
     @staticmethod
-    
     def calculate_grade(self,marks):
         
         if marks >= 80 and marks <= 100:
@@ -40,6 +40,8 @@ class School:
         else:
             return "Fail" 
         
+    
+    # calculate grade to value
     @staticmethod
     def grade_to_value(self, grade):
         grade_map = {
@@ -52,3 +54,31 @@ class School:
             'F' : 0.00 
         }
         return grade_map[grade]
+    
+     # calculate overall marks to grade    
+    @staticmethod
+    def all_value_to_grade(self,value):
+        
+        if value >=  4.5 and value <= 5.00:
+            return 'A+'
+        elif value >= 3.5 and value < 4.5:
+            return 'A'
+        elif value >= 3.0 and value < 3.5:
+            return 'A-'
+        elif value >= 2.5 and value < 3.0:
+            return 'B'
+        elif value >= 2.0 and value < 2.5:
+            return 'C'
+        elif value >= 1.0 and value < 2.0:
+            return 'D'
+        else:
+            return "Fail" 
+        
+    def __repr__(self):
+        # All classrooms
+        # All students
+        # All Subjects
+        # All Teachers
+        # All Student Result
+        pass
+    
