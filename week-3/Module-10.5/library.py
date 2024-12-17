@@ -11,6 +11,7 @@ class User:
         self.id = id 
         self.name = name
         self.password = password
-        
+        self.bbooks = []
+        self.rbooks = []
         
         
