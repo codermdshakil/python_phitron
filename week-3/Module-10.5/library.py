@@ -64,6 +64,19 @@ class Library:
                     book.quantity -= 1
                     print("Borrow Successfully!")
 
-                     
+    # retrun a Book
+    def returnBook(self, user, token):
+        for book in self.books:
+            if book.id == token:
+                if book in user.bBooks:
+                     book.quantity += 1
+                     user.rBooks.append(book)
+                     user.bBooks.remove(book)
+                     print("Return Successfully!")
+                     return
+                else:
+                    print("Not found in Borrow List!")
+                 
+                 
         
         
