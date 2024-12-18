@@ -162,6 +162,8 @@ while True:
                 print(user.name)
         elif ch == 5:
             currentUser = None
+        else:
+            print("Invalid Index!!") 
             
             
                 
