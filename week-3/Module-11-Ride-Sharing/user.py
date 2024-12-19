@@ -1,10 +1,18 @@
 
-class User:
+from abc import ABC, abstractmethod
+
+class User(ABC):
     
-    def __init__(self,name,password):
+    def __init__(self, name,email, nid):
         self.name = name
-        self.password = password
+        self.email = email
+        self.nid = nid
+        self.wallet = 0
         
+    @abstractmethod
+    def display_profile(self):
+        raise NotImplementedError 
+    
 
         
         
