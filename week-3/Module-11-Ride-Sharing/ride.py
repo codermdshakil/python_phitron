@@ -26,3 +26,18 @@ class Ride:
         
     def __repr__(self):
         return f"Ride Details. Started {self.start_location} to {self.end_location}"
+
+
+# Dhaka - Sylhet
+# Ride request a ki ki thake
+# 1. Ke request korteche -- rider
+# 2. Se kothay jabe -- end_location
+
+class Ride_request():
+
+    def __init__(self, rider, end_location):
+        self.rider = rider
+        self.end_location = end_location
+        
+        
+
