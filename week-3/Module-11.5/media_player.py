@@ -161,7 +161,6 @@ audiobook2 = AudioBook("Audio Book 2", "9.52 Min", "This is a description of aud
 
 
 
-
 # music1.play()
 # music1.get_description()
 # music1.info()
@@ -183,17 +182,3 @@ library.add_media(audiobook2)
 freeUser = FreeUser("Person 1")
 # freeUser.play_media(library)
 
-
-
-
-# class ClassA:
-#     pass
-
-# class ClassB:
-#     def print_class_name(self, instance):
-#         print(instance.__class__.__name__)  # Get the class name
-
-# # Example usage
-# a = ClassA()
-# b = ClassB()
-# b.print_class_name(a)  # Output: ClassA
