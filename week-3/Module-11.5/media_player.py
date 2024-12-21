@@ -160,6 +160,12 @@ audiobook1 = AudioBook("Audio Book 1", "10.56 Min", "This is a description of au
 audiobook2 = AudioBook("Audio Book 2", "9.52 Min", "This is a description of audio book of Atomic Habit")
 
 
+# Check Class name 
+# print(isinstance(music1,Music)) # True
+# print(isinstance(video1,Music)) # Flase
+
+
+
 
 # music1.play()
 # music1.get_description()
@@ -181,4 +187,6 @@ library.add_media(audiobook2)
 # 
 freeUser = FreeUser("Person 1")
 # freeUser.play_media(library)
+
+
 
