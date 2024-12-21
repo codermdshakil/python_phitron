@@ -33,7 +33,7 @@ class Ride:
 # 1. Ke request korteche -- rider
 # 2. Se kothay jabe -- end_location
 
-class Ride_request():
+class RideRequest():
 
     def __init__(self, rider, end_location):
         self.rider = rider
