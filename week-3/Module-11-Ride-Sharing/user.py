@@ -62,9 +62,8 @@ class Driver(User):
         print(f"Driver Name : {self.name}")
         
     def accept_ride(self, ride):
-        # accept korbo
-        pass
-    
+        ride.set_driver(self) # Driver Object (self) mean Driver Object
+        
     
     
     
