@@ -1,10 +1,32 @@
 
 from datetime import datetime
+from vehical import Car, Bike
+
+class RideShaing:
+    def __init__(self, company_name):
+        self.company_name = company_name
+        self.riders = []
+        self.drivers = []
+        self.rides = []
+        
+    
+    def add_rider(self, rider):
+        self.riders.append(rider)
+    
+    def add_driver(self, driver):
+        self.drivers.append(driver)
+        
+        
+    def __repr__(self):
+        return f"Company name {self.company_name} with riders : {len(self.riders)} and Drivers : {len(self.drivers)}"
+        
+
 
 class Ride:
-    def __init__(self, start_location, end_location):
+    def __init__(self, start_location, end_location, vehical):
         self.start_location = start_location
         self.end_location = end_location
+        self.vehical = vehical
         self.driver = None
         self.rider = None
         self.start_time = None
@@ -45,14 +67,22 @@ class RideMatching:
         self.available_drivers = drivers
         
     
-    def find_driver(self,ride_request):
+    def find_driver(self,ride_request, vehical_type):
         
         if len(self.available_drivers) > 0:
             print("Looking for drivers......")
             driver = self.available_drivers[0]
             
-            # make a ride usin rider current location to end location
-            ride = Ride(ride_request.rider.current_location,ride_request.end_location)
+           
+            
+            if vehical_type == 'car':
+                vehical = Car("Car", "ABC456", 30)
+            elif vehical_type == 'bike':
+                vehical = Bike("Motor Bike", '1234BH', 50)
+                
+            
+             # make a ride usin rider current location to end location
+            ride = Ride(ride_request.rider.current_location,ride_request.end_location,vehical)
             
             driver.accept_request(ride)
             return ride
