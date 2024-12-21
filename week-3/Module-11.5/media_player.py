@@ -85,7 +85,11 @@ class Library():
     def __init__(self, library_name):
         self.library_name = library_name
         self.__media_items = []
-        self.__media_by_genre = []
+        self.__media_by_genre = {
+            'Music':[],
+            'Video':[],
+            'Audio':[]
+        }
         
     
     # get media items
@@ -98,40 +102,98 @@ class Library():
     
     def add_media(self, media):
         self.__media_items.append(media)
-        
-        
-
-
-# Create Library using Library class
-lb = Library("Phitron LB")
-print(lb.library_name)
-
-
-
-
     
+    # # get class name from object
+    # def print_class_name(self, instance):
+    #     print(instance.__class__.__name__)
+        
+    
+        
+
+# create user 
+class User(ABC):
+    
+    def __init__(self, name):
+        self.name = name 
+        
+    @abstractmethod
+    def play_media(self):
+        pass
+    
+
+# free user
+class FreeUser(User):
+    
+    def __init__(self, name):
+        super().__init__(name)
+        
+    def play_media(self, library):
+        for media in library.get_media_items():
+            media.play()
+            
+            
+# Premium User
+class PremiumUser(User):
+    
+    def __init__(self, name):
+        super().__init__(name)
+        
+    def play_media(self, library):
+        for media in library.get_media_items():
+            media.play()
+        
+    
+    
+    
+    
+    
+# Create Library using Library class
+library = Library("Phitron LB")
+
+
+
 music1 = Music("Music 1", "3.45 Min", "This is a music and it's duration is 3.45 min")
 music2 = Music("Music 2", "6.45 Min", "This is a music and it's duration is 6.45 min")
 video1 = Video("Video 1", "4.54 Min", "This is a video of some songs")
 video2 = Video("Video 2", "5.16 Min", "This is a video of some songs")
 audiobook1 = AudioBook("Audio Book 1", "10.56 Min", "This is a description of audio book of Atomic Habit")
 audiobook2 = AudioBook("Audio Book 2", "9.52 Min", "This is a description of audio book of Atomic Habit")
+
+
+
+
 # music1.play()
 # music1.get_description()
 # music1.info()
 # video1.info()
 # audiobook1.info()
 
-# add media items
-lb.add_media(music1)
-lb.add_media(music2)
-lb.add_media(video1)
-lb.add_media(video2)
-lb.add_media(audiobook1)
-lb.add_media(audiobook2)
+# add media items for free users
+library.add_media(music1)
+library.add_media(music2)
+library.add_media(video1)
+library.add_media(video2)
+library.add_media(audiobook1)
+library.add_media(audiobook2)
 
-# print(len(lb.get_media_items()))
-
-
+#add items for Premium Users
 
 
+# 
+freeUser = FreeUser("Person 1")
+# freeUser.play_media(library)
+
+
+
+
+# class ClassA:
+#     pass
+
+# class ClassB:
+#     def print_class_name(self, instance):
+#         print(instance.__class__.__name__)  # Get the class name
+
+# # Example usage
+# a = ClassA()
+# b = ClassB()
+# b.print_class_name(a)  # Output: ClassA
