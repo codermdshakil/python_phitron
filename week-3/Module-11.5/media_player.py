@@ -85,11 +85,8 @@ class Library():
     def __init__(self, library_name):
         self.library_name = library_name
         self.__media_items = []
-        self.__media_by_genre = {
-            'Music':[],
-            'Video':[],
-            'Audio':[]
-        }
+        self.__media_by_genre = {}
+        self.__genre = ""
         
     
     # get media items
@@ -102,8 +99,26 @@ class Library():
     
     def add_media(self, media):
         self.__media_items.append(media)
+        
+        if isinstance(media, Music):
+            self.__genre = 'Music'
+        
+        if isinstance(media, Video):
+            self.__genre = 'Video'
+        
+        if isinstance(media, AudioBook):
+            self.__genre = 'AudioBook'
+            
+        # check and then append
+        if self.__genre in self.__media_by_genre:
+            self.__media_by_genre[self.__genre].append(media)
+            
+        else:
+            self.__media_by_genre[self.__genre] = [media,] # tuple, list after first element should comma
+            
+        
     
-    # # get class name from object
+    # # get class name from object using instance
     # def print_class_name(self, instance):
     #     print(instance.__class__.__name__)
         
@@ -137,16 +152,24 @@ class PremiumUser(User):
     
     def __init__(self, name):
         super().__init__(name)
-        
+        self.__favourite_genre = []
+    
+    def set_favourite_genre(self, genre):
+        self.__favourite_genre = genre
+    
+    def get_facourite_genre(self):
+        return self.__favourite_genre
+    
+    
     def play_media(self, library):
-        for media in library.get_media_items():
-            media.play()
+        if self.__favourite_genre in library.get_media_by_genre():
+            for media in library.get_media_by_genre()[self.get_facourite_genre()]:
+                media.play()
+        else:
+            print(f"[{self.__favourite_genre}] this Genra is Not Avaiable!!")
+            print("You can just Choose these 3 genre Music, Video or AudioBook!!!")
         
-    
-    
-    
-    
-    
+
 # Create Library using Library class
 library = Library("Phitron LB")
 
@@ -165,13 +188,12 @@ audiobook2 = AudioBook("Audio Book 2", "9.52 Min", "This is a description of aud
 # print(isinstance(video1,Music)) # Flase
 
 
-
-
 # music1.play()
 # music1.get_description()
 # music1.info()
 # video1.info()
 # audiobook1.info()
+
 
 # add media items for free users
 library.add_media(music1)
@@ -181,12 +203,19 @@ library.add_media(video2)
 library.add_media(audiobook1)
 library.add_media(audiobook2)
 
-#add items for Premium Users
+# check dictionary values
+# print(library.get_media_by_genre())
 
-
-# 
 freeUser = FreeUser("Person 1")
 # freeUser.play_media(library)
+
+
+#add items for Premium Users
+premiumUser = PremiumUser("Premium Person 1")
+premiumUser.set_favourite_genre("Video")
+premiumUser.play_media(library)
+
+
 
 
 
