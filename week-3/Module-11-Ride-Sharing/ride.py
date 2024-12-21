@@ -50,6 +50,8 @@ class RideMatching:
         if len(self.available_drivers) > 0:
             print("Looking for drivers......")
             driver = self.available_drivers[0]
+            
+            # make a ride usin rider current location to end location
             ride = Ride(ride_request.rider.current_location,ride_request.end_location)
             
             driver.accept_request(ride)
