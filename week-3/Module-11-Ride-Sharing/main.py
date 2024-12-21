@@ -1,15 +1,18 @@
-
-from ride import RideShaing , Ride, RideRequest, RideMatching
-from user import Rider , User, Driver
+from ride import Ride, RideRequest, RideMatching, RideSharing
+from user import Rider, Driver
 from vehical import Car, Bike
 
+niye_jao = RideSharing("Niye Jao")
+rahim = Rider("Rahim Uddin", "rahim@gmail.com", 1234, "Mohakhali", 1200)
 
-niye_jao = RideShaing("Niye jao")
-rahim = Rider("Rahim", "rahim@gmail.com", 1234,"Mohakhali", 1200)
 niye_jao.add_rider(rahim)
-kolimuddin = Driver("Kolim Uddin", "koli@gmail.com", 1256, "Gulshan")
-niye_jao.add_driver(kolimuddin)
+kolimuddin = Driver("Kolim Uddin", "kolim@gmail.com", 1256, "Gulshan")
 
+niye_jao.add_driver(kolimuddin)
+rahim.request_ride(niye_jao, "Uttara", "car")
+
+kolimuddin.reach_destination(rahim.current_ride)
+
+rahim.show_current_ride()
 
 print(niye_jao)
-
