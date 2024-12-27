@@ -106,12 +106,12 @@ class Admin(Users):
                 
         
     # view item
-    def view_items(self):
+    def view_menu(self):
         print("\n")
         print("---------- List Of Items ----------")
         print(f"ID\tName\tPrice\tQuantity")
         for item in self.items:
-            print(f"{item.id}\t{item.name}\t{item.price}\t{item.price}")
+            print(f"{item.id}\t{item.name}\t{item.price}\t{item.quantity}")
 
 
 ad = Admin(2,"Admin","a@gmail.com","Dhaka")
@@ -130,9 +130,9 @@ ad.add_item(3,"Pasta",25.5,60)
 # ad.view_customers()
 # ad.view_items()
 # ad.remove_item()
-ad.view_items()
+ad.view_menu()
 ad.update_item_price()
-ad.view_items()
+ad.view_menu()
 
 
 
