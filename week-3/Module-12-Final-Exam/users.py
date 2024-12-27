@@ -66,8 +66,7 @@ class Customer(Users):
                         print(f"{item.id} id item order Successfully!")
                         print(f"Now, Your Balance = {self.wallet}")
                             
-                            
-                            
+
     def list_of_orders(self):
         print("\n")
         print("---------- List Of Order Items ----------")
@@ -82,9 +81,6 @@ class Customer(Users):
     
     def check_balance(self):
         return self.wallet
-    
-    
-
 
 # Create Admin
 class Admin(Users):
@@ -96,8 +92,16 @@ class Admin(Users):
         self.items = restaurent.items
         
     # create employee
-    def add_employee(self,emp):
-        employee = Employee(id=emp.id,name=emp.name,email=emp.email,address=emp.address,age=emp.age,destionation=emp.destination,salary=emp.salary)
+    def add_employee(self):
+        emp_id = int(input("Enter employee id : "))
+        emp_name = input("Enter employee name : ")
+        emp_email = input("Enter employee email : ")
+        emp_address = input("Enter employee address : ")
+        emp_age = input("Enter employee age : ")
+        emp_destination = input("Enter employee destination : ")
+        emp_salary = input("Enter employee Salary : ")
+        employee = Employee(id=emp_id,name=emp_name,email=emp_email,address=emp_address,age=emp_age,destionation=emp_destination,salary=emp_salary)
+        
         self.employees.append(employee)
         print(f"Employee {employee.name} id Added Successfully!!")
     
@@ -118,8 +122,12 @@ class Admin(Users):
             print(f"{emp.id}\t{emp.name}\t{emp.email}\t{emp.address}\t{emp.age}\t{emp.destination}\t{emp.salary}")
     
     # add customer
-    def add_customer(self,customer_object):
-        customer = Customer(id=customer_object.id,name=customer_object.name,email=customer_object.email,address=customer_object.address)
+    def add_customer(self):
+        customer_id = int(input("Enter Customer id : "))
+        customer_name = input("Enter Customer name : ")
+        customer_email = input("Enter Customer email : ")
+        customer_address = input("Enter Customer address : ")
+        customer = Customer(id=customer_id,name=customer_name,email=customer_email,address=customer_address)
         self.customers.append(customer)
         print(f"Customer {customer.name} Added Successfully!!")
     
@@ -141,8 +149,12 @@ class Admin(Users):
     
     
     # add item
-    def add_item(self,item_object):
-        item = Item(id=item_object.id,name=item_object.name,price=item_object.price,quantity=item_object.quantity)
+    def add_item(self):
+        item_id = int(input("Enter item id : "))
+        item_name = input("Enter item name : ")
+        item_price = int(input("Enter item price : "))
+        item_quantity = int(input("Enter item quantity : "))
+        item = Item(id=item_id,name=item_name,price=item_price,quantity=item_quantity)
         self.items.append(item)
         print(f"{item.name} Added Successfully!!")
     
@@ -170,66 +182,49 @@ class Admin(Users):
         print(f"ID\tName\tPrice\tQuantity")
         for item in self.items:
             print(f"{item.id}\t{item.name}\t{item.price}\t{item.quantity}")
+            
 
-# create restaurent
-restaurent = Restaurent("Cholen Khai")
-# Create Admin
-admin1 = Users(1,"Admin","admin@gmai.com","Dhaka")
-
-ad = Admin(admin1, restaurent)
-
-
-# emp_id = int(input("Enter employee id : "))
-# emp_name = input("Enter employee name : ")
-# emp_email = input("Enter employee email : ")
-# emp_address = input("Enter employee address : ")
-# emp_age = input("Enter employee age : ")
-# emp_destination = input("Enter employee destination : ")
-# emp_salary = input("Enter employee Salary : ")
-
-# # create a employee object
-# emp1 = Employee(emp_id, emp_name, emp_email, emp_address, emp_age, emp_destination, emp_salary)
-
-# # add employee object
-# ad.add_employee(emp1)
-
-
-# customer_id = int(input("Enter Customer id : "))
-# customer_name = input("Enter Customer name : ")
-# customer_email = input("Enter Customer email : ")
-# customer_address = input("Enter Customer address : ")
-
-# # # create a customer object
-# customer1 = Customer(customer_id, customer_name, customer_email,customer_address)
-# ad.add_customer(customer1)
-# ad.view_customers()
-
-
-item_id = int(input("Enter item id : "))
-item_name = input("Enter item name : ")
-item_price = int(input("Enter item price : "))
-item_quantity = int(input("Enter item quantity : "))
-
-# # # create a customer object
-item1 = Item(item_id,item_name,item_price,item_quantity)
-ad.add_item(item1)
-
-item_id = int(input("Enter item id : "))
-item_name = input("Enter item name : ")
-item_price = int(input("Enter item price : "))
-item_quantity = int(input("Enter item quantity : "))
-
-# # # create a customer object
-item2 = Item(item_id,item_name,item_price,item_quantity)
-ad.add_item(item2)
-
-customer1 = Customer(1,"Noyon","noyon@gmail.com","Ranigonj")
-# customer2 = Customer(2,"Nadim","nadim@gmail.com","Folbaria")
-customer1.menu()
-customer1.add_order()
-customer1.list_of_orders()
-
-
-
-
+while(True):
+    
+    restaurent = Restaurent("Cholo Kisu Khai")
+    
+    # create admin
+    ad = Users(1,"Admin","admin@gmail.com","Dhaka")
+    ad = Admin(ad,restaurent)
+    
+    print("Restaurent Management System!")
+    print("1. Admin Login")
+    print("2. Customer Login")
+    print("3. Exit")
+    
+    
+    option = int(input("Enter your Option: "))
+    
+    if option == 1:
+        ad_name = input("Enter Admin Name: ")
+        if ad.name == ad_name:
+            print('\n')
+            print(f"Welcome {ad_name}")
+            print("------ Admin Menu --------")
+            print("1. Create Customer Account")
+            print("2. Remove Customer Account")
+            print("3. View All Customers")
+            print("4. Manage Restaurent Menu")
+            print("5. Exit")
+        
+            op = int(input("Enter Option: "))
+            
+            if op == 1:
+                ad.add_customer()
+            elif op == 2:
+                ad.remove_customer()
+            elif op==3:
+                ad.view_customers()
+            elif op == 4:
+                pass
+            elif op == 5:
+                break
+            else:
+                print("Invalid Option!!")
+            
 
