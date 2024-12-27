@@ -97,6 +97,14 @@ class Admin(Users):
             if item.id == item_id:
                 self.items.remove(item)
     
+    def update_item_price(self):
+        item_id = int(input("Enter item id : "))
+        value = int(input("Enter item Price : "))
+        for item in self.items:
+            if item.id == item_id:
+                item.price = value
+                
+        
     # view item
     def view_items(self):
         print("\n")
@@ -122,7 +130,10 @@ ad.add_item(3,"Pasta",25.5,60)
 # ad.view_customers()
 # ad.view_items()
 # ad.remove_item()
-# ad.view_items()
+ad.view_items()
+ad.update_item_price()
+ad.view_items()
+
 
 
 
