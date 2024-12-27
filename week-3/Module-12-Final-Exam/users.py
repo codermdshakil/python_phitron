@@ -8,7 +8,21 @@ class Users(ABC):
         self.name = name
         self.email = email
         self.address = address
+
+class Restaurent():
+    
+    def __init__(self, name):
+        self.name = name
+        self.employees = []
+        self.customers = []
+        self.items = []
         
+    def show_menu(self):
+        print("\n")
+        print("---------- List Of Items ----------")
+        print(f"ID\tName\tPrice\tQuantity")
+        for item in self.items:
+            print(f"{item.id}\t{item.name}\t{item.price}\t{item.quantity}")
 
 # create Employee object
 class Employee(Users):
@@ -30,21 +44,47 @@ class Item():
 
 # Create Customer
 class Customer(Users):
-    
     def __init__(self, id, name, email, address):
         super().__init__(id, name, email, address)
-
-
-class Restaurent():
+        self.wallet = 0
+        self.orders = []
     
-    def __init__(self, name):
-        self.name = name
-        self.employees = []
-        self.customers = []
-        self.items = []
+    def menu(self):
+        restaurent.show_menu()
         
-        
-        
+    def add_order(self):
+        if self.wallet == 0:
+            print(f"You Balance is {self.wallet}. Add some money!")
+            self.add_money()
+        else:
+            item_id = int(input("Enter Item Id for order : "))
+            for item in restaurent.items:
+                    if item.id == item_id:
+                        self.orders.append(item)
+                        self.wallet -= item.price
+                        item.quantity = item.quantity-1
+                        print(f"{item.id} id item order Successfully!")
+                        print(f"Now, Your Balance = {self.wallet}")
+                            
+                            
+                            
+    def list_of_orders(self):
+        print("\n")
+        print("---------- List Of Order Items ----------")
+        print("Id\tName")
+        for item in self.orders:
+            print(f"{item.id}\t{item.name}")
+    
+    def add_money(self):
+        amount = int(input("Enter Amount: "))
+        self.wallet += amount
+        print(f"{amount} added to your wallet!!")
+    
+    def check_balance(self):
+        return self.wallet
+    
+    
+
 
 # Create Admin
 class Admin(Users):
@@ -138,6 +178,7 @@ admin1 = Users(1,"Admin","admin@gmai.com","Dhaka")
 
 ad = Admin(admin1, restaurent)
 
+
 # emp_id = int(input("Enter employee id : "))
 # emp_name = input("Enter employee name : ")
 # emp_email = input("Enter employee email : ")
@@ -164,16 +205,31 @@ ad = Admin(admin1, restaurent)
 # ad.view_customers()
 
 
-# item_id = int(input("Enter item id : "))
-# item_name = input("Enter item name : ")
-# item_price = input("Enter item price : ")
-# item_quantity = input("Enter item quantity : ")
+item_id = int(input("Enter item id : "))
+item_name = input("Enter item name : ")
+item_price = int(input("Enter item price : "))
+item_quantity = int(input("Enter item quantity : "))
 
 # # # create a customer object
-# item1 = Item(item_id,item_name,item_price,item_quantity)
-# ad.add_item(item1)
-# ad.view_menu()
-# ad.update_item_price()
-# ad.view_menu()
+item1 = Item(item_id,item_name,item_price,item_quantity)
+ad.add_item(item1)
+
+item_id = int(input("Enter item id : "))
+item_name = input("Enter item name : ")
+item_price = int(input("Enter item price : "))
+item_quantity = int(input("Enter item quantity : "))
+
+# # # create a customer object
+item2 = Item(item_id,item_name,item_price,item_quantity)
+ad.add_item(item2)
+
+customer1 = Customer(1,"Noyon","noyon@gmail.com","Ranigonj")
+# customer2 = Customer(2,"Nadim","nadim@gmail.com","Folbaria")
+customer1.menu()
+customer1.add_order()
+customer1.list_of_orders()
+
+
+
 
 
