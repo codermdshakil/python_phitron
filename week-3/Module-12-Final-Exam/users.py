@@ -35,19 +35,31 @@ class Customer(Users):
         super().__init__(id, name, email, address)
 
 
-# Create Admin
-class Admin(Users):
+class Restaurent():
     
-    def __init__(self, id, name, email, address):
-        super().__init__(id, name, email, address)
+    def __init__(self, name):
+        self.name = name
         self.employees = []
         self.customers = []
         self.items = []
         
+        
+        
+
+# Create Admin
+class Admin(Users):
+    
+    def __init__(self,object, restaurent):
+        super().__init__(id=object.id, name=object.name, email=object.email, address=object.address)
+        self.employees = restaurent.employees 
+        self.customers = restaurent.customers
+        self.items = restaurent.items
+        
     # create employee
-    def add_employee(self,id,name,email,address,age,destionation,salary):
-        employee = Employee(id,name,email,address,age,destionation,salary)
+    def add_employee(self,emp):
+        employee = Employee(id=emp.id,name=emp.name,email=emp.email,address=emp.address,age=emp.age,destionation=emp.destination,salary=emp.salary)
         self.employees.append(employee)
+        print(f"Employee {employee.name} id Added Successfully!!")
     
     # remove employee
     def remove_employee(self):
@@ -55,6 +67,7 @@ class Admin(Users):
         for emp in self.employees:
             if emp.id == emp_id:
                 self.employees.remove(emp)
+                print(f"This {emp.name} Removed!!")
     
     # view employee
     def view_employees(self):
@@ -65,9 +78,10 @@ class Admin(Users):
             print(f"{emp.id}\t{emp.name}\t{emp.email}\t{emp.address}\t{emp.age}\t{emp.destination}\t{emp.salary}")
     
     # add customer
-    def add_customer(self,id,name,email,address):
-        customer = Customer(id,name,email,address)
+    def add_customer(self,customer_object):
+        customer = Customer(id=customer_object.id,name=customer_object.name,email=customer_object.email,address=customer_object.address)
         self.customers.append(customer)
+        print(f"Customer {customer.name} Added Successfully!!")
     
     # remove customer
     def remove_customer(self):
@@ -75,6 +89,7 @@ class Admin(Users):
         for customer in self.customers:
             if customer.id == cus_id:
                 self.customers.remove(customer)
+                print(f"Customer {customer.name} Removed Successfully!!")
     
     # view customer
     def view_customers(self):
@@ -86,9 +101,10 @@ class Admin(Users):
     
     
     # add item
-    def add_item(self,id,name,price,quantity):
-        item = Item(id,name,price,quantity)
+    def add_item(self,item_object):
+        item = Item(id=item_object.id,name=item_object.name,price=item_object.price,quantity=item_object.quantity)
         self.items.append(item)
+        print(f"{item.name} Added Successfully!!")
     
     # remove item
     def remove_item(self):
@@ -96,6 +112,7 @@ class Admin(Users):
         for item in self.items:
             if item.id == item_id:
                 self.items.remove(item)
+                print(f"{item.name} Removed Successfully!!")
     
     def update_item_price(self):
         item_id = int(input("Enter item id : "))
@@ -103,6 +120,7 @@ class Admin(Users):
         for item in self.items:
             if item.id == item_id:
                 item.price = value
+                print(f"Updated {item.name} with price {item.price} Successfully!!")
                 
         
     # view item
@@ -113,27 +131,49 @@ class Admin(Users):
         for item in self.items:
             print(f"{item.id}\t{item.name}\t{item.price}\t{item.quantity}")
 
+# create restaurent
+restaurent = Restaurent("Cholen Khai")
+# Create Admin
+admin1 = Users(1,"Admin","admin@gmai.com","Dhaka")
 
-ad = Admin(2,"Admin","a@gmail.com","Dhaka")
-ad.add_employee(1,"Shakil","shakil@gmail.com","Ranigonj",25,"Teacher",15000)
-ad.add_employee(2,"Noyon","noyon@gmail.com","Kaligonj",20,"Mentor",25000)
-ad.add_customer(3,"Nadim","n@gmail.com","Kaligonj")
-ad.add_customer(4,"Asraf","asraf@gmail.com","Gazipur")
-ad.add_item(1,"Pizza",45.5,45)
-ad.add_item(2,"Burger",15.5,50)
-ad.add_item(3,"Pasta",25.5,60)
-# ad.view_employees()
-# ad.remove_employee()
-# ad.view_employees()
+ad = Admin(admin1, restaurent)
+
+# emp_id = int(input("Enter employee id : "))
+# emp_name = input("Enter employee name : ")
+# emp_email = input("Enter employee email : ")
+# emp_address = input("Enter employee address : ")
+# emp_age = input("Enter employee age : ")
+# emp_destination = input("Enter employee destination : ")
+# emp_salary = input("Enter employee Salary : ")
+
+# # create a employee object
+# emp1 = Employee(emp_id, emp_name, emp_email, emp_address, emp_age, emp_destination, emp_salary)
+
+# # add employee object
+# ad.add_employee(emp1)
+
+
+# customer_id = int(input("Enter Customer id : "))
+# customer_name = input("Enter Customer name : ")
+# customer_email = input("Enter Customer email : ")
+# customer_address = input("Enter Customer address : ")
+
+# # # create a customer object
+# customer1 = Customer(customer_id, customer_name, customer_email,customer_address)
+# ad.add_customer(customer1)
 # ad.view_customers()
-# ad.remove_customer()
-# ad.view_customers()
-# ad.view_items()
-# ad.remove_item()
-ad.view_menu()
-ad.update_item_price()
-ad.view_menu()
 
 
+# item_id = int(input("Enter item id : "))
+# item_name = input("Enter item name : ")
+# item_price = input("Enter item price : ")
+# item_quantity = input("Enter item quantity : ")
+
+# # # create a customer object
+# item1 = Item(item_id,item_name,item_price,item_quantity)
+# ad.add_item(item1)
+# ad.view_menu()
+# ad.update_item_price()
+# ad.view_menu()
 
 
