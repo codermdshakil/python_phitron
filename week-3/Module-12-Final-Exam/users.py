@@ -75,7 +75,7 @@ class Customer(Users):
             print(f"{item.id}\t{item.name}")
     
     def add_money(self):
-        amount = int(input("Enter Amount: "))
+        amount = float(input("Enter Amount: "))
         self.wallet += amount
         print(f"{amount} added to your wallet!!")
     
@@ -152,7 +152,7 @@ class Admin(Users):
     def add_item(self):
         item_id = int(input("Enter item id : "))
         item_name = input("Enter item name : ")
-        item_price = int(input("Enter item price : "))
+        item_price = float(input("Enter item price : "))
         item_quantity = int(input("Enter item quantity : "))
         item = Item(id=item_id,name=item_name,price=item_price,quantity=item_quantity)
         self.items.append(item)
@@ -168,7 +168,7 @@ class Admin(Users):
     
     def update_item_price(self):
         item_id = int(input("Enter item id : "))
-        value = int(input("Enter item Price : "))
+        value = float(input("Enter item Price : "))
         for item in self.items:
             if item.id == item_id:
                 item.price = value
@@ -183,48 +183,110 @@ class Admin(Users):
         for item in self.items:
             print(f"{item.id}\t{item.name}\t{item.price}\t{item.quantity}")
             
+# Create the restaurant instance outside the loop
+restaurent = Restaurent("Cholo Kisu Khai")
+
+# Create the admin instance outside the loop
+ad_user = Users(1, "Admin", "admin@gmail.com", "Dhaka")
+ad = Admin(ad_user, restaurent)
 
 while(True):
-    
-    restaurent = Restaurent("Cholo Kisu Khai")
-    
-    # create admin
-    ad = Users(1,"Admin","admin@gmail.com","Dhaka")
-    ad = Admin(ad,restaurent)
-    
     print("Restaurent Management System!")
     print("1. Admin Login")
     print("2. Customer Login")
     print("3. Exit")
-    
     
     option = int(input("Enter your Option: "))
     
     if option == 1:
         ad_name = input("Enter Admin Name: ")
         if ad.name == ad_name:
-            print('\n')
-            print(f"Welcome {ad_name}")
-            print("------ Admin Menu --------")
-            print("1. Create Customer Account")
-            print("2. Remove Customer Account")
-            print("3. View All Customers")
-            print("4. Manage Restaurent Menu")
-            print("5. Exit")
-        
-            op = int(input("Enter Option: "))
+            while(True):
+                print('\n')
+                print(f"Welcome {ad_name}")
+                print("------ Admin Menu --------")
+                print("1. Create Customer Account")
+                print("2. Remove Customer Account")
+                print("3. View All Customers")
+                print("4. Manage Restaurent Menu")
+                print("5. Exit")
             
-            if op == 1:
-                ad.add_customer()
-            elif op == 2:
-                ad.remove_customer()
-            elif op==3:
-                ad.view_customers()
-            elif op == 4:
-                pass
-            elif op == 5:
-                break
-            else:
-                print("Invalid Option!!")
-            
-
+                op = int(input("Enter Option: "))
+                
+                if op == 1:
+                    ad.add_customer()
+                elif op == 2:
+                    ad.remove_customer()
+                elif op == 3:
+                    ad.view_customers()
+                elif op == 4:
+                    while(True):
+                        print("\n")
+                        print("----- Manage Restaurent Menu ------")
+                        print("1. View Customers")
+                        print("2. Add Item")
+                        print("3. Remove Item")
+                        print("4. Update Items using Price")
+                        print("5. View Items")
+                        print("6. Exit")
+                        
+                        ad_option = int(input("Enter your Option: "))
+                        
+                        if ad_option == 1:
+                            ad.view_customers()
+                        elif ad_option == 2:
+                            ad.add_item()
+                        elif ad_option == 3:
+                            ad.remove_item()
+                        elif ad_option == 4:
+                            ad.update_item_price()
+                        elif ad_option == 5:
+                            ad.view_menu()
+                        elif ad_option == 6:
+                            break
+                        else:
+                            print("Invalid Option!!")
+                            
+                elif op == 5:
+                    break
+                else:
+                    print("Invalid Option!!")
+                    
+    elif option == 2:
+        customer_name = input("Enter your name: ")
+        for customer in restaurent.customers:
+            if customer.name == customer_name:
+                while(True):
+                    print(f"------- {customer.name}'s Menu -----")
+                    print("1. View restaurent menu")
+                    print("2. View Balance")
+                    print("3. Add Balance")
+                    print("4. Place Order")
+                    print("5. View Past Orders")
+                    print("6. Exit")
+                    
+                    cus_option = int(input("Enter Option: "))
+                    
+                    if cus_option == 1:
+                        restaurent.show_menu()
+                        
+                    elif cus_option == 2:
+                        print(f"{customer.check_balance()}")
+                        
+                    elif cus_option == 3:
+                        customer.add_money()
+                        
+                    elif cus_option == 4:
+                        customer.add_order()
+                        
+                    elif cus_option == 5:
+                        customer.list_of_orders()
+                        
+                    elif cus_option == 6:
+                        break
+                    else:
+                        print("Invalid Option!!")
+    elif option == 3:
+        break
+    else:
+        print("Invalid Option!!")
