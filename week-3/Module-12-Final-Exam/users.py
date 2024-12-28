@@ -271,7 +271,7 @@ while(True):
                         restaurent.show_menu()
                         
                     elif cus_option == 2:
-                        print(f"{customer.check_balance()}")
+                        print(f"Your balance = {customer.check_balance()}")
                         
                     elif cus_option == 3:
                         customer.add_money()
